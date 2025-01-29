@@ -1,0 +1,41 @@
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+import warnings
+warnings.filterwarnings(&quot;ignore&quot;)
+df=pd.read_csv(&#39;Admission_predict.csv&#39;)
+print(df.head(5))
+df=df.drop([&#39;Serial No.&#39;], axis=1)
+print(df.isnull().sum())
+fig=sns.distplot(df[&#39;GRE Score&#39;], kde=False)
+plt.title(&quot;Distribution of GRE Score&quot;)
+plt.show()
+fig=sns.distplot(df[&#39;TOEFL Score&#39;], kde=False)
+
+plt.title(&quot;Distribution of TOEFL Score&quot;)
+plt.show()
+fig=sns.distplot(df[&#39;TOEFL Score&#39;], kde=False)
+plt.title(&quot;Distribution of TOEFL Score&quot;)
+plt.show()
+fig=sns.distplot(df[&#39;University Rating&#39;], kde=False)
+plt.title(&quot;Distribution of University Rating&quot;)
+plt.show()
+fig=sns.distplot(df[&#39;SOP&#39;], kde=False)
+plt.title(&quot;SOP&quot;)
+plt.show()
+fig=sns.distplot(df[&#39;CGPA&#39;], kde=False)
+plt.title(&quot;CGPA&quot;)
+plt.show()
+fig = sns.regplot(x=&quot;GRE Score&quot;, y=&quot;TOEFL Score&quot;, data=df)
+plt.title(&quot;GRE Score vs TOEFL Score&quot;)
+plt.show
+fig = sns.regplot(x=&quot;CGPA&quot;, y=&quot;SOP&quot;, data=df)
+plt.title(&quot;SOP vs CGPA &quot;)
+plt.show
+fig = sns.regplot(x=&quot;TOEFL Score&quot;, y=&quot;SOP&quot;, data=df)
+plt.title(&quot;TOEFL Score vs SOP &quot;)
+plt.show
+fig=sns.lmplot(x=&#39;GRE Score&#39;,y=&quot;SOP&quot;, data=df)
+plt.title(&quot;GRE Score vs SOP&quot;)
+plt.show
