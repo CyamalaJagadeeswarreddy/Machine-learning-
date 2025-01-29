@@ -1,0 +1,65 @@
+import pandas as pd
+import numpy as np
+# array manipulation
+import matplotlib.pyplot as plt
+# Graph plotting libraries
+import seaborn as sns
+# Data visualization and statistical graphics
+import warnings
+warnings.filterwarnings(&quot;ignore&quot;)
+df=pd.read_csv(&#39;Heart.csv&#39;)
+print(df.head(3))
+# head - print first 3 rows of the dataset
+
+print()
+print(&#39;Below are the features of the Dataset&#39;)
+df.info()
+# info()- print details of the rows and columns
+print()
+print(&#39;Dimensions of the Data set&#39;)
+print(&#39;Number of the rows in the dataset&#39;, df.shape[0])
+print(&#39;Number of the columns in the dataset&#39;, df.shape[1])
+print()
+print(&#39;checking the null values in the dataset&#39;)
+print(df.isnull().sum())
+print(df.describe())
+male=len(df[df[&#39;Sex&#39;]== 1])
+female=len(df[df[&#39;Sex&#39;]== 0])
+plt.figure(figsize=(8,6))
+labels= &#39;Male&#39;,&#39;Female&#39;
+sizes = [male, female]
+colors=[&#39;skyblue&#39;, &#39;yellowgreen&#39;]
+explode=(0,0)
+plt.pie(sizes, explode=explode, labels=labels, colors=colors, autopct=&#39;%1.1f%%&#39;,
+shadow=True, startangle=90)
+plt.axis(&#39;equal&#39;)
+plt.show()
+plt.figure(figsize=(8,6))
+labels=&#39;Fasting blood sugar &lt;120mg/dl&#39;, &#39;Fasting blood sugar &gt;120mg/dl&#39;
+sizes=[len(df[df[&#39;Fbs&#39;] == 0]), len(df[df[&#39;Fbs&#39;] == 1])]
+colors=[&#39;skyblue&#39;, &#39;yellowgreen&#39;]
+explode=(0.1,0)
+plt.pie(sizes, explode=explode, labels=labels, colors=colors, autopct=&#39;%1.1f%%&#39;,
+shadow=True, startangle=180)
+plt.axis(&#39;equal&#39;)
+plt.show()
+plt.figure(figsize=(8,6))
+labels=&#39;yes&#39;, &#39;No&#39;
+sizes=[len(df[df[&#39;ExAng&#39;] == 0]), len(df[df[&#39;ExAng&#39;] == 1])]
+colors=[&#39;skyblue&#39;, &#39;yellowgreen&#39;]
+explode=(0.1,0)
+plt.pie(sizes, explode=explode, labels=labels, colors=colors, autopct=&#39;%1.1f%%&#39;,
+shadow=True, startangle=180)
+plt.axis(&#39;equal&#39;)
+
+plt.show()
+plt.figure(figsize=(8,6))
+labels=&#39;ChestPain Type:0&#39;, &#39;ChestPain Type:1&#39;, &#39;ChestPain Type:2&#39;, &#39;ChestPain Type:3&#39;
+sizes=[len(df[df[&#39;cp&#39;] == &#39;typical&#39;]), len(df[df[&#39;cp&#39;] == &#39;asymptomatic&#39;]), len(df[df[&#39;cp&#39;] ==
+&#39;nontypical&#39;]), len(df[df[&#39;cp&#39;] == &#39;nonanginal&#39;])]
+colors=[&#39;skyblue&#39;, &#39;yellowgreen&#39;, &#39;orange&#39;, &#39;gold&#39;]
+explode=(0,0,0,0)
+plt.pie(sizes, explode=explode, labels=labels, colors=colors, autopct=&#39;%1.1f%%&#39;,
+shadow=True, startangle=180)
+plt.axis(&#39;equal&#39;)
+plt.show()
